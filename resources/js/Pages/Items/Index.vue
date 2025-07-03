@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 defineProps({
     items: Array
@@ -25,6 +26,17 @@ defineProps({
                     class="overflow-hidden bg-white shadow-sm sm:rounded-lg"
                 >
                     <div class="p-6 text-gray-900">
+
+                        <PrimaryButton>
+                            <a href="/items/create" class="text-white no-underline">
+                                Add Item
+                            </a>
+                        </PrimaryButton>
+
+                        <div v-if="$page.props.flash.success" class="bg-green-100 border border-green-400 text-black-700 px-4 py-3 m-2 rounded relative" role="alert">
+                            {{ $page.props.flash.success }}
+                        </div>
+
                         <table class="table-auto w-full mt-4">
                             <thead>
                                 <tr>

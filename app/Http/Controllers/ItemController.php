@@ -20,12 +20,23 @@ class ItemController extends Controller
 
     public function create()
     {
-        // Logic to show form for creating a new item
+        // Return the create item view
+        return inertia('Items/Create');
     }
 
     public function store(Request $request)
     {
-        // Logic to store a new item
+        // validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'qty' => 'required|integer|digits_between:1,6',
+        ]);
+
+        // create a new item
+        Item::create($request->all());
+
+        // redirect to the items index page
+        return redirect()->route('items.index')->with('success', 'Item created successfully.');
     }
 
     public function show($id)

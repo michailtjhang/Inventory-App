@@ -11,7 +11,8 @@ const showError = ref(false);
 
 const form = useForm({
     name: '',
-    qty: 0
+    qty: 0,
+    unit: ''
 });
 
 const submitForm = () => {
@@ -30,6 +31,8 @@ const submitForm = () => {
                 errorMessage.value = errors.name;
             } else if (errors.qty) {
                 errorMessage.value = errors.qty;
+            } else if (errors.unit) {
+                errorMessage.value = errors.unit;
             } else {
                 errorMessage.value = 'Terjadi kesalahan saat menyimpan data';
             }
@@ -63,7 +66,7 @@ const submitForm = () => {
                 >
                     <div class="p-6 text-gray-900">
 
-                        <!-- Error Notification - Tambahan -->
+                        <!-- Error Notification -->
                         <div v-if="showError" class="mb-4 p-4 border-l-4 border-red-500 bg-gradient-to-r from-red-50 to-red-100 rounded-lg shadow-md">
                             <div class="flex">
                                 <div class="flex-shrink-0">
@@ -89,15 +92,22 @@ const submitForm = () => {
                             <div class="mt-4">
                                 <label for="name" class="block text-sm font-medium text-gray-700">Item Name</label>
                                 <input type="text" v-model="form.name" id="name" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                <!-- Error message untuk field name - Tambahan -->
+                                <!-- Error message untuk field name -->
                                 <p v-if="form.errors.name" class="mt-1 text-sm text-red-600 font-medium">{{ form.errors.name }}</p>
                             </div>
 
                             <div class="mt-4">
                                 <label for="qty" class="block text-sm font-medium text-gray-700">Quantity</label>
                                 <input type="number" v-model="form.qty" id="qty" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                <!-- Error message untuk field qty - Tambahan -->
+                                <!-- Error message untuk field qty -->
                                 <p v-if="form.errors.qty" class="mt-1 text-sm text-red-600 font-medium">{{ form.errors.qty }}</p>
+                            </div>
+
+                            <div class="mt-4">
+                                <label for="unit" class="block text-sm font-medium text-gray-700">Unit</label>
+                                <input type="text" v-model="form.unit" id="unit" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                <!-- Error message untuk field unit -->
+                                <p v-if="form.errors.unit" class="mt-1 text-sm text-red-600 font-medium">{{ form.errors.unit }}</p>
                             </div>
 
                             <div class="mt-6">

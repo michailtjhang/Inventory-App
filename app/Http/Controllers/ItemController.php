@@ -29,7 +29,8 @@ class ItemController extends Controller
         // validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
-            'qty' => 'required|integer|digits_between:1,6',
+            'qty'  => 'required|integer|digits_between:1,6',
+            'unit' => 'required|string|max:100',
         ]);
 
         // create a new item

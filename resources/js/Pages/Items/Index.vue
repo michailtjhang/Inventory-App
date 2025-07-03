@@ -43,6 +43,7 @@ defineProps({
                                     <th class="px-4 py-2">#</th>
                                     <th class="px-4 py-2">Name</th>
                                     <th class="px-4 py-2">Quantity</th>
+                                    <th class="px-4 py-2">Unit</th>
                                     <th class="px-4 py-2">Actions</th>
                                 </tr>
                             </thead>
@@ -51,6 +52,7 @@ defineProps({
                                     <td class="border px-4 py-2">{{ ++index }}</td>
                                     <td class="border px-4 py-2">{{ item.name }}</td>
                                     <td class="border px-4 py-2">{{ item.qty }}</td>
+                                    <td class="border px-4 py-2">{{ item.unit }}</td>
                                     <td class="border px-4 py-2">
                                         <button @click="$emit('edit', item)" class="text-blue-500 hover:underline">Edit</button>
                                         <button @click="$emit('delete', item)" class="text-red-500 hover:underline ml-2">Delete</button>

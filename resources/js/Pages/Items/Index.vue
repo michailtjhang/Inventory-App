@@ -37,6 +37,10 @@ defineProps({
                             {{ $page.props.flash.success }}
                         </div>
 
+                        <div v-if="$page.props.flash.error" class="bg-red-100 border border-red-400 text-black-700 px-4 py-3 m-2 rounded relative" role="alert">
+                            {{ $page.props.flash.error }}
+                        </div>
+
                         <table class="table-auto w-full mt-4">
                             <thead>
                                 <tr>
@@ -54,8 +58,9 @@ defineProps({
                                     <td class="border px-4 py-2">{{ item.qty }}</td>
                                     <td class="border px-4 py-2">{{ item.unit }}</td>
                                     <td class="border px-4 py-2">
-                                        <button @click="$emit('edit', item)" class="text-blue-500 hover:underline">Edit</button>
-                                        <button @click="$emit('delete', item)" class="text-red-500 hover:underline ml-2">Delete</button>
+                                        <a :href="`/items/${item.id}/edit`" class="text-blue-500 hover:underline">Edit</a> | 
+                                        <a :href="`/items/${item.id}/edit-stock`" class="text-blue-500 hover:underline">Edit Stock</a> |
+                                        <a :href="`/items/${item.id}/stock-card`" class="text-blue-500 hover:underline">Stock Card</a>                                        
                                     </td>
                                 </tr>
                             </tbody>
